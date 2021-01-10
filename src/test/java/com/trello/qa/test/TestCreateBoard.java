@@ -8,11 +8,9 @@ import org.testng.annotations.Test;
 public class TestCreateBoard extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() throws InterruptedException {
-        app.user().initLogin();
-        app.user().fillLoginForm(new User()
-                .setEmail("sb_vip@mail.ru")
-                .setPassword("Slavlik444"));
-        app.user().confirmLogin();
+        if(!app.user().isAvatarPresent()){
+            app.user().login();
+        }
     }
 
      @Test

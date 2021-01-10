@@ -12,7 +12,6 @@ public class loginTest extends TestBase {
                 .setEmail("sb_vip@mail.ru")
                 .setPassword("Slavlik444"));
         app.user().confirmLogin();
-
         Assert.assertTrue(app.user().isAvatarPresent());
     }
 }

@@ -2,19 +2,23 @@ package com.trello.qa.test;
 
 
 import com.trello.qa.fw.ApplicationManager;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+
+import org.openqa.selenium.remote.BrowserType;
+import org.testng.annotations.AfterSuite;
+
+import org.testng.annotations.BeforeSuite;
 
 public class TestBase {
-    protected ApplicationManager app = new ApplicationManager();
+    protected static ApplicationManager app =
+            new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
-    @BeforeClass
+    @BeforeSuite
     public void setUp(){
         app.start();
 
     }
 
-    @AfterMethod()
+    @AfterSuite()
     public void tearDown(){
         app.stop();
 

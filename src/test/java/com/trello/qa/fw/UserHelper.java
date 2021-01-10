@@ -18,6 +18,7 @@ public class UserHelper extends HelperBase {
         type(By.id("user"), user.getEmail());
         Thread.sleep(2000);
         click(By.id("login"));
+        Thread.sleep(2000);
         type(By.id("password"), user.getPassword());
 
 
@@ -30,5 +31,17 @@ public class UserHelper extends HelperBase {
     public boolean isAvatarPresent() throws InterruptedException {
         Thread.sleep(20000);
         return isElementPresent(By.cssSelector("[data-test-id='header-member-menu-button']"));
+    }
+    public void login() throws InterruptedException {
+        initLogin();
+        fillLoginForm(new User()
+                .setEmail("sb_vip@mail.ru")
+                .setPassword("Slavlik444"));
+        confirmLogin();
+    }
+
+    public void clickLogOutButton() {
+        click(By.cssSelector("._1FekJJAz6Hu32v"));
+        click(By.xpath("//span[contains(.,'Log Out')]"));
     }
 }

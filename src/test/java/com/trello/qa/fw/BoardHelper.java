@@ -18,9 +18,11 @@ public class BoardHelper extends HelperBase {
     }
 
     public void addBoard(User user) {
-        type(By.cssSelector("[data-test-id='create-board-title-input']"),user.getWorlds());
-    }
+        if(user.getWorlds()!=null){
+            type(By.cssSelector("[data-test-id='create-board-title-input']"),user.getWorlds());
+        }
 
+    }
     public void teamVisible() {
         click(By.cssSelector("[class='nch-icon _2_Q6rrYCFblD3M z53beXNiDPJAy2 _3IkOtLubuAF6kK _1_7ndZKXfF_Z1n']"));
     }
@@ -28,7 +30,7 @@ public class BoardHelper extends HelperBase {
         click(By.cssSelector("[class='_2FCfpANq784raH LrSeigrVRlrVHb']"));
     }
     public void createBoardButton() {
-        click(By.cssSelector("[data-test-id='create-board-submit-button']"));
+        clickByXpath("//button[.='Create Board']");
     }
 
 
