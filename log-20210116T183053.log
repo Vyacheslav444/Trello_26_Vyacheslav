@@ -1,0 +1,5 @@
+18:31:08 INFO   - Opened site: https://trello.com/
+18:31:10 INFO   - start test testAtlassianUserLogin
+18:31:10 INFO   - User name is sb_vip@mail.ru
+18:31:42 INFO   - Test Passed
+18:31:42 INFO   - stop test testAtlassianUserLogin
