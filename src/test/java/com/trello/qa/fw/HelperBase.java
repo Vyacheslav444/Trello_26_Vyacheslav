@@ -68,6 +68,13 @@ public class HelperBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+
+    }
+    public void attachPhoto(By locator, File file) {
+        if (file != null) {
+
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
+        }
+    }
 }

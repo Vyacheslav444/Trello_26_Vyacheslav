@@ -10,8 +10,8 @@ public class loginTest extends TestBase {
         logger.info("User name is sb_vip@mail.ru");
         app.user().initLogin();
         app.user().fillLoginForm(new User()
-                .setEmail("sb_vip@mail.ru")
-                .setPassword("Slavlik444"));
+                .setEmail(app.setEmail())
+                .setPassword(app.setPassword()));
         app.user().confirmLogin();
         Assert.assertTrue(app.user().isAvatarPresent());
         logger.info("Test Passed");

@@ -1,0 +1,6 @@
+21:34:47 INFO   - Opened site: https://trello.com/
+21:34:48 INFO   - start test testAtlassianUserLogin
+21:34:48 INFO   - User name is sb_vip@mail.ru
+21:35:22 INFO   - Test Passed
+21:35:22 INFO   - Created screenshot src/test/Screenshot/screenshot1611776122162.png
+21:35:22 INFO   - stop test testAtlassianUserLogin
