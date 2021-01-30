@@ -1,6 +1,8 @@
 package com.trello.qa.test;
 
 import com.trello.qa.model.User;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,11 +18,18 @@ public class ChangeAvatar extends TestBase {
         }
     }
     @Test
-    public void testChangeAvatar(){
+    public void testChangeAvatar() {
         app.user().clickOnTheAvatar();
         app.user().goToProfile();
         app.user().goToAtlassianAcc();
-        app.user().chengeAvatar("C:\\Users\\Slavlik\\Documents");
+        app.user().changeAvatar("C:\\Users\\Slavlik\\Documents\\GitHub\\Trello_26_Vyacheslav\\src\\test\\resources\\1.jpg");
+        Assert.assertTrue(app.user().isElementPresent(By.xpath("//*[contains(.,'Avatar added')]")));
+        logger.info("Test Passed");
+        String screenshot = "src/test/Screenshot/screenshot" + System.currentTimeMillis() + ".png";
+        app. user().takeScreenshot(screenshot);
+
+        logger.info("Created screenshot " + screenshot);
+        app.user().closeWindow();
 
 
     }

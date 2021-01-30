@@ -3,6 +3,10 @@ package com.trello.qa.fw;
 import com.trello.qa.model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -59,14 +63,44 @@ public class UserHelper extends HelperBase {
 
     public void goToAtlassianAcc() {
         click(By.cssSelector("[href$=manage-profile]"));
-        List<String> tabs= new ArrayList<>(wd.getWindowHandles());
-        wd.switchTo().window(tabs.get(1));
+        swithcToWindow(1);
+
+    }
+    public void closeWindow(){
+        wd.close();
+       swithcToWindow(0);
 
     }
 
-    public void chengeAvatar(String path) {
 
-        attachPhoto(By.cssSelector("[id='image-input']"),new File(path));
+
+
+    public void changeAvatar(String path) {
+        WebElement avatar = wd.findElement(By.cssSelector("[data-test-selector='profile-hover-info']"));
+        Actions actions = new Actions(wd);
+          actions
+                  .moveToElement(avatar)
+                  .moveToElement(avatar.findElement(By.xpath(".//*[@class='Droplist__Trigger-sc-1z05y4v-3 eteVrT']")))
+                .click()
+                .perform();
+        new WebDriverWait(wd,10)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[contains(text(),'Change profile photo')]"))).click();
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        attachPhoto(By.cssSelector("#image-input"),new File(path));
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        click(By.xpath("//button//span[contains(., 'Upload')]"));
 
     }
 }
+//span[contains(text(),'Change profile photo')]
+//div[@id='uid16']//span[2]
+//span[contains(text(),'Upload')]

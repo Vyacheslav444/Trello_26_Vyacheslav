@@ -1,0 +1,5 @@
+18:04:04 INFO   - Opened site: https://trello.com/
+18:04:04 INFO   - start test testChangeAvatar
+18:05:10 INFO   - Test Passed
+18:05:11 INFO   - Created screenshot src/test/Screenshot/screenshot1612022710842.png
+18:05:11 INFO   - stop test testChangeAvatar

@@ -30,7 +30,7 @@ Logger logger = LoggerFactory.getLogger(TestBase.class);
     public void stopLogger(Method m){
         logger.info("stop test " + m.getName());
     }
-    @AfterSuite()
+    @AfterSuite(enabled = false)
     public void tearDown(){
         app.stop();
 

@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelperBase {
     WebDriver wd;
@@ -71,9 +73,12 @@ public class HelperBase {
 
 
     }
+    public void swithcToWindow(int index) {
+        List<String> tabs= new ArrayList<>(wd.getWindowHandles());
+        wd.switchTo().window(tabs.get(index));
+    }
     public void attachPhoto(By locator, File file) {
         if (file != null) {
-
             wd.findElement(locator).sendKeys(file.getAbsolutePath());
         }
     }
