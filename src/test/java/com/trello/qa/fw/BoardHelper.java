@@ -37,5 +37,6 @@ public class BoardHelper extends HelperBase {
     public boolean isNewBoardPresent() throws InterruptedException {
         Thread.sleep(5000);
         return isElementPresent(By.cssSelector("[type='submit']"));
+
     }
 }

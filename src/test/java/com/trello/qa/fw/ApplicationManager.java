@@ -15,6 +15,9 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+
+
+    DeleteBoardHelper deleteBoardHelper;
     Properties properties;
     WebDriver wd;
     UserHelper userHelper;
@@ -49,6 +52,7 @@ public class ApplicationManager {
 
         userHelper = new UserHelper(wd);
         boardHelper = new BoardHelper(wd);
+        deleteBoardHelper = new DeleteBoardHelper(wd);
 
     }
     public String setEmail(){
@@ -66,6 +70,10 @@ public class ApplicationManager {
         return userHelper;
     }
 
-    public BoardHelper board() { return boardHelper;
+    public BoardHelper board() {
+        return boardHelper;
+    }
+    public DeleteBoardHelper delBoard() {
+        return deleteBoardHelper;
     }
 }
