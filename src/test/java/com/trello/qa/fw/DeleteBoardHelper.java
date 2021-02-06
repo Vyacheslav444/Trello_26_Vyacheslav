@@ -3,66 +3,64 @@ package com.trello.qa.fw;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class DeleteBoardHelper extends HelperBase {
     public DeleteBoardHelper(WebDriver wd) {
         super(wd);
     }
 
+ public int getCountBoard() {
+    int size = wd.findElements(By
+            .xpath("//ul[@class='boards-page-board-section-list']/li/a")).size();
+    System.out.println(size);
+    return size;
 
+}
     public void CleanAll() throws InterruptedException {
+      while(wd.findElements(By.cssSelector("[class='boards-page-board-section-list-item']")).size() > 0){
 
-    public void clickByBoard() {
-        click(By.cssSelector("[class='boards-page-board-section-list-item']"));
-    }
-
-    public void clickByShowMenu() {
-        click(By.cssSelector("[class='board-header-btn mod-show-menu js-show-sidebar']"));
-    }
-
-    public void clickByMore() {
-        clickByXpath("//*[@id=\"content\"]/div/div[2]/div/div/div[2]/div/ul[1]/li[5]/a");
-        //click(By.cssSelector("[class='board-menu-navigation-item-link js-open-more']"));
-    }
-
-    public void closeBoard() {
-        click(By.cssSelector("[class='board-menu-navigation-item-link js-close-board']"));
-    }
-
-    public void ByClose() {
-        click(By.cssSelector("[class='js-confirm full nch-button nch-button--danger']"));
-    }
-
-    public void PermDeleteBoard() {
-        click(By.cssSelector("[class='quiet js-delete']"));
-
-    }
-
-    public void Delete() {
-        click(By.cssSelector("[class='js-confirm full nch-button nch-button--danger']"));
-    }
-
-    public void HomeButton() {
-        click(By.cssSelector("[class='nch-icon _2_Q6rrYCFblD3M _3Dk1GPoKnJxuep _1iYprMLTeGpyW9']"));
-    }
-
-    public int getCountBoard() {
-        int size = wd.findElements(By.xpath("//ul[@class='boards-page-board-section-list']/li/a")).size();
-        System.out.println(size);
-        return size;
-
-    }
+          wd.findElements(By.cssSelector("[class='boards-page-board-section-list-item']")).get(0).click();
+        pause(4000);
+            click(By.cssSelector("[class='boards-page-board-section-list-item']"));
+            clickByXpath("//li[contains(.,'More')]");
+            click(By.cssSelector("[class='board-menu-navigation-item-link js-close-board']"));
+            clickByXpath("//input[@type='submit' and @value='Close']");
+            click(By.cssSelector("[class='nch-icon _2_Q6rrYCFblD3M _3Dk1GPoKnJxuep _1iYprMLTeGpyW9']"));
+      }
 
 
-    public void DelWhile() throws InterruptedException {
-        while (wd.findElements(By.xpath("//ul[@class='boards-page-board-section-list']/li/a")).size() > 0) {
+        //click(By.cssSelector("[class='boards-page-board-section-list-item']"));
+        //pause(2000);
+        //clickByXpath("//a[@title='Go back.']");
 
-           /// for (int i = 0; i < el.size() - 1; i++) {
-                wd.findElements(By.xpath("//ul[@class='boards-page-board-section-list']/li/a")).get(0).click();
-                pause(4000);
-            }
-        }
+        //clickByXpath("//li[contains(.,'More')]");
+        //click(By.cssSelector("[class='board-menu-navigation-item-link js-close-board']"));
+        //clickByXpath("//input[@type='submit' and @value='Close']");
+
+
+        //pause(4000);
+        //clickByXpath("//a[.='Permanently Delete Board…']");
+        //click(By.xpath("//input[@value='Delete']"));
+        //pause(4000);
+
+        //click(By.cssSelector("[class='nch-icon _2_Q6rrYCFblD3M _3Dk1GPoKnJxuep _1iYprMLTeGpyW9']"));
+
+
+        //pause(4000);
+        //app.delBoard().closeBoard();
+        //[class='js-confirm full nch-button nch-button--danger']
+        //app.delBoard().ByClose();
+        //[class='quiet js-delete']
+        //app.delBoard().PermDeleteBoard();
+        //[class='js-confirm full nch-button nch-button--danger']
+        //app.delBoard().Delete();
+        //[class='nch-icon _2_Q6rrYCFblD3M _3Dk1GPoKnJxuep _1iYprMLTeGpyW9']
+        //app.delBoard().HomeButton();
 
 
     }
+
 }
