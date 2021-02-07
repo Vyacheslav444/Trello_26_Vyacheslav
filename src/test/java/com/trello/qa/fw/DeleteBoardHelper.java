@@ -13,18 +13,23 @@ public class DeleteBoardHelper extends HelperBase {
     }
 
  public int getCountBoard() {
-    int size = wd.findElements(By
-            .xpath("//ul[@class='boards-page-board-section-list']/li/a")).size();
+     try {
+         pause(5000);
+     } catch (InterruptedException e) {
+         e.printStackTrace();
+     }
+     int size = wd.findElements(By
+            .cssSelector(".boards-page-board-section-list li a")).size();
     System.out.println(size);
     return size;
 
 }
     public void CleanAll() throws InterruptedException {
-      while(wd.findElements(By.cssSelector("[class='boards-page-board-section-list-item']")).size() > 0){
+      while(wd.findElements(By.cssSelector(".boards-page-board-section-list li a")).size() > 2){
 
-          wd.findElements(By.cssSelector("[class='boards-page-board-section-list-item']")).get(0).click();
+          wd.findElements(By.cssSelector(".boards-page-board-section-list li a")).get(0).click();
         pause(4000);
-            click(By.cssSelector("[class='boards-page-board-section-list-item']"));
+            //click(By.cssSelector("[class='boards-page-board-section-list-item']"));
             clickByXpath("//li[contains(.,'More')]");
             click(By.cssSelector("[class='board-menu-navigation-item-link js-close-board']"));
             clickByXpath("//input[@type='submit' and @value='Close']");

@@ -13,7 +13,7 @@ public class DeleteBoardsTest extends TestBase {
 
     @Test
     public void DelBoardsTest() throws InterruptedException {
-        if(app.delBoard().getCountBoard()>1){
+        if(app.delBoard().getCountBoard()>4){
             app.delBoard().CleanAll();
       }
 
